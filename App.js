@@ -5,18 +5,22 @@ import {
   SafeAreaView,
   useColorScheme
 } from 'react-native';
-import { Colors } from "react-native/Libraries/NewAppScreen";
+import RecipesList from "./src/screens/RecipesList";
+
+import {Provider} from "react-redux";
+import {store} from "./src/redux/store";
 
 export default function App() {
 
-  const isDarkMode = useColorScheme() === 'dark';
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.light-content,
-  }
+  const isDarkMode = useColorScheme() === 'purple';
+
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : "light-content"}></StatusBar>
-    </SafeAreaView>
+      <Provider store={store}>
+        <SafeAreaView>
+          <StatusBar barStyle={isDarkMode}></StatusBar>
+          <RecipesList></RecipesList>
+        </SafeAreaView>
+      </Provider>
   );
 }
 
