@@ -1,4 +1,6 @@
 import axios from "axios";
+import {useDispatch} from "react-redux";
+import {addRecipes} from "../../redux/actions";
 
 //const {getAllRecipes} = useFetchRecipes();
 
@@ -10,6 +12,9 @@ const MAX_RESULT_PER_PAGE = 25;
 
 // Search all recipes in the server
 export  const useFetchRecipes = () => {
+
+    const dispatch = useDispatch();
+
     const getAllRecipes = async () => {
         try {
             const response = await axios.get(URL_API,{
@@ -19,6 +24,7 @@ export  const useFetchRecipes = () => {
                 }
             });
             console.log( "result", response.data.results);
+            dispatch(addRecipes(response.data.results))
         }
         catch (e) {
             console.error("Error in getAllRecipes", e);
