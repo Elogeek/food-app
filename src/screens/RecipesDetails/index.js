@@ -42,6 +42,11 @@ export default function RecipesDetails({route,navigation}) {
                         )
                     )}
                 </View>
+                <View style={styles.containerSteps}>
+                    <Text style={styles.instructions}>Steps:</Text>
+                    <Text style={styles.instructions}>{recipe.number}</Text>
+                    {recipe.step?.map()}
+                </View>
 
             </ScrollView>
         </>
@@ -50,6 +55,7 @@ export default function RecipesDetails({route,navigation}) {
 
 // Desgin a recipe
 const styles = StyleSheet.create({
+
     image: {
         width: "100%",
         height: 200,
@@ -75,5 +81,17 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         fontSize: 16,
         paddingBottom: 20
-    }
+    },
+    containerSteps: {
+        marginHorizontal: 16,
+        marginVertical: 10,
+        borderTopColor: "grey",
+        borderTopWidth: 1,
+        padding: 6
+    },
+    instructions: {
+        fontSize: 16,
+        paddingBottom: 20
+    },
+
 });
