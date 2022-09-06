@@ -30,7 +30,21 @@ export  const useFetchRecipes = () => {
             console.error("Error in getAllRecipes", e);
         }
     }
+
+    const getRecipeById = async (id) => {
+            try {
+                const response = await axios.get("https://api.spoonacular.com/recipes/{id}/information", {
+                    params: {
+                        apiKey: KEY_API
+                    }
+                })
+            }
+            catch (e) {
+                console.log("Error in getRecipeById", e)
+            }
+    }
     return {
-        getAllRecipes
+        getAllRecipes,
+        getRecipeById
     }
 }

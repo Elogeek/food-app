@@ -1,13 +1,14 @@
 import React, {useEffect} from 'react';
-import {Text} from "react-native";
+import {FlatList} from "react-native";
 import {useFetchRecipes} from "../api/recipes/useFetchRecipes";
 import {useSelector} from "react-redux";
 import {getRecipesList} from "../redux/selectors";
-import {recipes} from "../redux/reducers/recipes";
+import RecipeTile from "./RecipeTile";
 
-export default function RecipesList() {
+export default function RecipesList({navigation}) {
 
     const allRecipes = useSelector(getRecipesList);
+
     const {getAllRecipes} = useFetchRecipes();
     console.log("ALL RECIPES", allRecipes);
 
@@ -15,12 +16,16 @@ export default function RecipesList() {
         getAllRecipes()
     }, [])
 
+    // Stock recette (= item) return recipe
+    const renderItem = ({item}) => <RecipeTile navigation={navigation} item={item} />
+
+
     return (
-        <>
-            <Text>Recipes list</Text>
-                 {allRecipes.map(recipe => (
-                    <Text>{recipe.title}</Text>
-            ))}
-       </>
+        <FlatList
+            data={allRecipes}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={renderItem}
+        />
     );
+
 }
