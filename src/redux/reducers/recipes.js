@@ -1,4 +1,4 @@
-import {ADD_RECIPES, SELECTED_RECIPE} from "../actions/actionsType";
+import {ADD_RECIPES, SELECTED_RECIPE, STEPS_TO_FOLLOW} from "../actions/actionsType";
 
 const initialState = {
     list: [],
@@ -19,6 +19,11 @@ export const recipes = (state = initialState, action) => {
             return {
                 list: state.list,
                 selectedRecipe: action.payload.data
+            };
+        case STEPS_TO_FOLLOW:
+            return {
+                list: state.list,
+                stepsToFollow: action.payload.data
             };
         default:
             return state

@@ -1,7 +1,8 @@
 import axios from "axios";
 import {useDispatch} from "react-redux";
-import {addRecipes, selectedRecipe} from "../../redux/actions";
+import {addRecipes, selectedRecipe, stepsToFollowRecipe} from "../../redux/actions";
 
+// custom hook : une fonction qui va retourner un certain nombre de propriétés.
 //const {getAllRecipes} = useFetchRecipes();
 
 // Link of the api
@@ -31,6 +32,7 @@ export  const useFetchRecipes = () => {
         }
     }
 
+    // single recipe
     const getRecipeById = async (id) => {
             try {
                 const response = await axios.get("https://api.spoonacular.com/recipes/{id}/information", {
@@ -45,8 +47,26 @@ export  const useFetchRecipes = () => {
                 console.log("Error in getRecipeById", e)
             }
     }
+
+    // the steps to follow for single recipe
+    const getStepsToFollowRecipe = async (id) => {
+        try {
+            const response = await axios.get("https://api.spoonacular.com/recipes/{id}/analyzedInstructions", {
+                params: {
+                    apiKey: KEY_API
+                }
+            })
+            //console.log("answer = ", response.data)
+            dispatch(stepsToFollowRecipe(response.data))
+        }
+        catch (e) {
+            console.log("Error in getStepsToFollowRecipe", e)
+        }
+    }
+
     return {
         getAllRecipes,
-        getRecipeById
+        getRecipeById,
+        getStepsToFollowRecipe
     }
 }

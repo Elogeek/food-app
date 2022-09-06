@@ -42,6 +42,7 @@ export default function RecipesDetails({route,navigation}) {
                         )
                     )}
                 </View>
+
             </ScrollView>
         </>
     );
