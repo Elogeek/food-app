@@ -1,4 +1,4 @@
-import {ADD_RECIPES} from "./actionsType";
+import {ADD_RECIPES, SELECTED_RECIPE} from "./actionsType";
 
 //Add recipe
 export const addRecipes = (data) => ({
@@ -8,3 +8,10 @@ export const addRecipes = (data) => ({
     }
 })
 
+// Select a recipe
+export const selectedRecipe = (data) => ({
+    type: SELECTED_RECIPE,
+    playload: {
+        data
+    }
+})

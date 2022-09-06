@@ -27,24 +27,24 @@ export default function RecipeTile ({item,navigation}) {
 const styles = StyleSheet.create({
 
     container: {
-        flexDirection:"row",
-        borderBottomColor:"orange",
-        borderWidth:1
+        flexDirection: "row",
+        borderBottomColor: "orange",
+        borderWidth: 1
     },
 
     image: {
         width:"30%",
-        height:70
+        height: 70
     },
 
     subContainer: {
-        width:"70%",
-        padding:7
+        width: "70%",
+        padding: 7
     },
 
     title: {
         fontWeight:"bold",
-        fontSize:16
+        fontSize: 16
     }
 
 })
