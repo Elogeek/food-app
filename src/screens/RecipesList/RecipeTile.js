@@ -4,6 +4,7 @@ import {View, Text, Image, StyleSheet, TouchableOpacity} from "react-native";
 export default function RecipeTile ({item,navigation}) {
 
     return (
+        // Lors du clique sur une recette, on arrrive aux détails de celle-ci
         <TouchableOpacity
             onPress={() => {
                 navigation.navigate("RecipesDetails", {

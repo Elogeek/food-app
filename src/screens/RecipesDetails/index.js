@@ -3,8 +3,9 @@ import {Image, Text, TouchableOpacity, View, StyleSheet, ScrollView} from "react
 import {useSelector} from "react-redux";
 import {getSelectedRecipe} from "../../redux/selectors";
 import {useFetchRecipes} from "../../api/recipes/useFetchRecipes";
+import Ingredient from "./Ingredient";
 
-export default function RecipesDetails({route,navigation}) {
+export default function RecipesDetails({route}) {
 
     const {id} = route.params
     //console.log("ID = ", id);
@@ -27,12 +28,6 @@ export default function RecipesDetails({route,navigation}) {
             <ScrollView>
                 <Image source={{uri: recipe.image}} style={styles.image} />
                 <Text style={styles.title}>{recipe.title}</Text>
-                <TouchableOpacity
-                    onPress={() => {
-                        navigation.goBack()
-                    }}>
-                        <Text>Revenir à l'accueil</Text>
-                </TouchableOpacity>
                 <Text style={styles.caption}>Ready in {recipe.readyInMinutes} minutes</Text>
                 <Text style={styles.caption}>{recipe.summary}</Text>
                 <View style={styles.containerIngredients}>

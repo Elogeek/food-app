@@ -1,16 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import {ActivityIndicator, FlatList, View} from "react-native";
-import {useFetchRecipes} from "../api/recipes/useFetchRecipes";
+import {useFetchRecipes} from "../../api/recipes/useFetchRecipes";
 import {useSelector} from "react-redux";
-import {getRecipesList} from "../redux/selectors";
+import {getRecipesList} from "../../redux/selectors";
 import RecipeTile from "./RecipeTile";
 
-export default function RecipesList({navigation}) {
+export default function Index({navigation}) {
 
     const allRecipes = useSelector(getRecipesList);
     const [page,setPage] = useState(0);
     const {getAllRecipes} = useFetchRecipes();
-    console.log("ALL RECIPES", allRecipes);
+    //console.log("ALL RECIPES", allRecipes);
 
     useEffect(() => {
         getAllRecipes(page)

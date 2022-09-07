@@ -1,7 +1,9 @@
+// Selectors : Sélectionner une partie de notre store
+
 // Recipes
 export const getRecipesList = store => store.recipes.list;
 export const getSelectedRecipe = store => store.recipes.selectedRecipe;
 
 // Task list
-//export const getTasks = store => store.tasksList;
-//export const getCompletedTasks = store => store.tasksList.filter(task => task.isCompleted);
+export const getTasks = store => store.tasksList;
+export const getCompletedTasks = store => store.tasksList.filter(task => task.isCompleted);
